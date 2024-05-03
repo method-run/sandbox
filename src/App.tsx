@@ -1,11 +1,17 @@
 import "./App.css";
 import "./pxb-blink.bundled.js";
-import EstimatingWork from "./EstimatingWork.mdx";
+import EstimatingWork, {
+  frontmatter as _EstimatingWorkFrontmatter,
+} from "./EstimatingWork.mdx";
 import { Link, Route, Routes } from "react-router-dom";
 import { useRef } from "react";
 
+const EstimatingWorkFrontmatter = _EstimatingWorkFrontmatter as {
+  [key: string]: string | undefined;
+};
+
 function App() {
-  const dialogRef = useRef<HTMLDialogElement>(null);
+  console.log({ EstimatingWorkFrontmatter });
 
   return (
     <>
@@ -16,20 +22,24 @@ function App() {
             <div>
               <pxb-blink>Foo</pxb-blink>
               <br />
-              <Link to="/estimating-work">Estimating Work</Link>
+              <Link to={`/${EstimatingWorkFrontmatter.slug}`}>
+                Estimating Work
+              </Link>
               <br />
               <Link to="/dialog">Dialog</Link>
             </div>
           }
         />
         <Route
-          path="estimating-work"
+          path={EstimatingWorkFrontmatter.slug}
           element={
             <div>
               <div>
                 <Link to="/">Home</Link>
               </div>
               <DialogDemo />
+              <h1>{EstimatingWorkFrontmatter.title}</h1>
+              <em>{EstimatingWorkFrontmatter.date}</em>
               <EstimatingWork />
             </div>
           }
