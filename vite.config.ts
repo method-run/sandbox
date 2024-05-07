@@ -12,5 +12,5 @@ export default defineConfig({
     {enforce: 'pre', ...mdx({remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter]})},
     react()
   ],
-  base: '/sandbox/'
+  base: 'sandbox'
 })
