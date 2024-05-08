@@ -1,6 +1,7 @@
 import { Link, Route, Routes } from "react-router-dom";
 import { DialogDemo } from "./DialogDemo";
 import { Nav } from "../Nav/Nav";
+import { Colors } from "./Colors";
 
 export const Experiments = () => {
   return (
@@ -21,15 +22,7 @@ export const Experiments = () => {
             </div>
           }
         />
-        <Route
-          path={"colors"}
-          element={
-            <div>
-              <h2>Colors</h2>
-              <p>colors demos</p>
-            </div>
-          }
-        />
+        <Route path={"colors"} element={<Colors />} />
         <Route path={"dialog-demo"} element={<DialogDemo />} />
       </Routes>
     </>
