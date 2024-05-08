@@ -42,4 +42,21 @@ export const APCA_CONSTANTS_98G = {
     return this.mExpAdj / this.blkClmp;
   },
   mOffsetOut: 0.312865795870758,
-};
+} as const;
+
+/**
+ * WCAG 2.1 requires a contrast ratio of at least 3:1 for graphics and
+ * user interface components (such as form input borders). WCAG Level
+ * AAA requires a contrast ratio of at least 7:1 for normal text and
+ * 4.5:1 for large text. Large text is defined as 14 point (typically
+ * 18.66px) and bold or larger, or 18 point (typically 24px) or larger.
+ */
+const _gradeWCAG2: Array<[number, string]> = [
+  [3, "graphics"],
+  [4.5, "large-text"],
+  [7, "normal-text"],
+];
+
+export const gradeWCAG2 = _gradeWCAG2.sort(
+  ([contrastA], [contrastB]) => contrastB - contrastA
+);

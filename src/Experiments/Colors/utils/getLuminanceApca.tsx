@@ -5,7 +5,7 @@ import { APCA_CONSTANTS_98G } from "./constants";
  * For r, g, b values from 0-255: clamp, linearize, apply coefficients, sum, then
  * return the resulting luminance.
  */
-export function getLuminanceFromRgb([r, g, b] = [0, 0, 0]) {
+export function getLuminanceApca([r, g, b] = [0, 0, 0]) {
   function simpleExp(chan: number) {
     return Math.pow(chan / 255.0, APCA_CONSTANTS_98G.mainTRC);
   }

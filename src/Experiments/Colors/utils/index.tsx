@@ -1,2 +1,2 @@
-export { getApcaContrast } from "./getApcaContrast";
-export { getLuminanceFromRgb } from "./getLuminanceFromRgb";
+export { getContrastApca } from "./getContrastApca";
+export { getLuminanceApca } from "./getLuminanceApca";

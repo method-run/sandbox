@@ -5,7 +5,13 @@ import { APCA_CONSTANTS_98G } from "./constants";
  * txtY and bgY must be between 0.0-1.0
  * IMPORTANT: Do not swap, polarity is important.
  */
-export function getApcaContrast(txtY: number, bgY: number, places = -1) {
+export function getContrastApca({
+  txtY,
+  bgY,
+}: {
+  txtY: number;
+  bgY: number;
+}): number {
   const icp = [0.0, 1.1]; // input range clamp / input error check
 
   if (
@@ -21,7 +27,6 @@ export function getApcaContrast(txtY: number, bgY: number, places = -1) {
 
   let SAPC = 0.0; // For raw SAPC values
   let outputContrast = 0.0; // For weighted final values
-  let polCat = "BoW"; // Alternate Polarity Indicator. N normal R reverse
 
   // Soft clamps Y for either color if it is near black.
   txtY =
@@ -58,10 +63,6 @@ export function getApcaContrast(txtY: number, bgY: number, places = -1) {
         ? 0.0
         : SAPC - APCA_CONSTANTS_98G.loBoWoffset;
   } else {
-    // For reverse polarity, light text on dark (WoB)
-    // WoB should always return negative value.
-    polCat = "WoB";
-
     SAPC =
       (Math.pow(bgY, APCA_CONSTANTS_98G.revBG) -
         Math.pow(txtY, APCA_CONSTANTS_98G.revTXT)) *
@@ -73,22 +74,5 @@ export function getApcaContrast(txtY: number, bgY: number, places = -1) {
         : SAPC + APCA_CONSTANTS_98G.loWoBoffset;
   }
 
-  // return Lc (lightness contrast) as a signed numeric value
-  // Round to the nearest whole number as string is optional.
-  // Rounded can be a signed INT as output will be within ± 127
-  // places = -1 returns signed float, 1 or more set that many places
-  // 0 returns rounded string, uses BoW or WoB instead of minus sign
-
-  if (places < 0) {
-    // Default (-1) number out, all others are strings
-    return outputContrast * 100.0;
-  } else if (places == 0) {
-    return (
-      Math.round(Math.abs(outputContrast) * 100.0) + "<sub>" + polCat + "</sub>"
-    );
-  } else if (Number.isInteger(places)) {
-    return (outputContrast * 100.0).toFixed(places);
-  } else {
-    return 0.0;
-  }
-} // End APCAcontrast()
+  return outputContrast * 100.0;
+}
