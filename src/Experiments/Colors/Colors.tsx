@@ -4,6 +4,7 @@ import { getContrastApca, getLuminanceApca } from "./utils";
 import { getLuminanceWcag2 } from "./utils/getLuminanceWcag2";
 import { getContrastWcag2 } from "./utils/getContrastWcag2";
 import { getGradeWcag2 } from "./utils/getGradeWcag2";
+import { getGradeApca } from "./utils/getGradeApca";
 
 const COLOR_EIGENGRAU = "#16161D";
 
@@ -71,6 +72,8 @@ export const Colors = () => {
     [contrastWcag2]
   );
 
+  const gradeApca = useMemo(() => getGradeApca(contrastApca), [contrastApca]);
+
   const handleClickFlip = useCallback(() => {
     const nextColorText = colorBackground;
     const nextColorBackground = colorText;
@@ -116,6 +119,8 @@ export const Colors = () => {
       <dl>
         <dt>APCA Contrast</dt>
         <dd>{contrastApca}</dd>
+        <dt>APCA Grade</dt>
+        <dd>{gradeApca}</dd>
         <dt>WCAG2 Contrast</dt>
         <dd>{contrastWcag2}</dd>
         <dt>WCAG2 Grade</dt>

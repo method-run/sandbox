@@ -51,12 +51,53 @@ export const APCA_CONSTANTS_98G = {
  * 4.5:1 for large text. Large text is defined as 14 point (typically
  * 18.66px) and bold or larger, or 18 point (typically 24px) or larger.
  */
+export const GRADES_WCAG2 = {
+  /** For graphics and user interface components such as form input borders */
+  graphics: "graphics",
+  /** Large text is defined as 18.66px or 20px and larger, variously. */
+  largeText: "large-text",
+  /** Large text is defined as smaller than 18.66px or 20px, variously. */
+  normalText: "normal-text",
+} as const;
+
 const _gradeWCAG2: Array<[number, string]> = [
-  [3, "graphics"],
-  [4.5, "large-text"],
-  [7, "normal-text"],
+  [3, GRADES_WCAG2.graphics],
+  [4.5, GRADES_WCAG2.largeText],
+  [7, GRADES_WCAG2.normalText],
 ];
 
 export const gradeWCAG2 = _gradeWCAG2.sort(
+  ([contrastA], [contrastB]) => contrastB - contrastA
+);
+
+/**
+ * Approximations of WCAG2's contrast recommendations, based on the lightest
+ * grayscale hex color that passed AAA recommended contrast on a white background.
+ */
+export const GRADES_APCA = {
+  /**
+   * Achieving Rank 3 with 24px, 400 weight text is roughly equivalent to
+   * WCAG2's graphics recommendation
+   */
+  graphics: "24-400-rank-3",
+  /**
+   * Achieving Rank 3 with 18px, 400 weight text is roughly equivalent to
+   * WCAG2's large text recommendation
+   */
+  largeText: "18-400-rank-3",
+  /**
+   * Achieving Rank 1 with 14px, 400 weight text is roughly equivalent to
+   * WCAG2's normal text recommendation
+   */
+  normalText: "14-400-rank-1",
+} as const;
+
+const _gradeApca: Array<[number, string]> = [
+  [60, GRADES_APCA.graphics],
+  [75, GRADES_APCA.largeText],
+  [85, GRADES_APCA.normalText],
+];
+
+export const gradeAPCA = _gradeApca.sort(
   ([contrastA], [contrastB]) => contrastB - contrastA
 );
