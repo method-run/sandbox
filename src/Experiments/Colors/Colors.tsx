@@ -1,10 +1,13 @@
 import Color from "colorjs.io";
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { getContrastApca, getLuminanceApca } from "./utils";
-import { getLuminanceWcag2 } from "./utils/getLuminanceWcag2";
-import { getContrastWcag2 } from "./utils/getContrastWcag2";
-import { getGradeWcag2 } from "./utils/getGradeWcag2";
-import { getGradeApca } from "./utils/getGradeApca";
+import {
+  getContrastApca,
+  getContrastWcag2,
+  getGradeApca,
+  getGradeWcag2,
+  getLuminanceApca,
+  getLuminanceWcag2,
+} from "./utils";
 
 const COLOR_EIGENGRAU = "#16161D";
 
