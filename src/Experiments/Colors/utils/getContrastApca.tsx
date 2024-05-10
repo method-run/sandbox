@@ -1,4 +1,4 @@
-import { APCA_CONSTANTS_98G } from "./constants";
+import { APCA_CONSTANTS_98G } from "./APCA_CONSTANTS_98G";
 
 /**
  * Take luminances for txt and bg, return contrast. Contrast may be negative.

@@ -1,5 +1,5 @@
+import { APCA_CONSTANTS_98G } from "./APCA_CONSTANTS_98G";
 import { clamp255 } from "./clamp255";
-import { APCA_CONSTANTS_98G } from "./constants";
 
 /**
  * For r, g, b values from 0-255: clamp, linearize, apply coefficients, sum, then
