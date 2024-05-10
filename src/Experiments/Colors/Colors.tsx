@@ -1,100 +1,35 @@
-import { useCallback, useState } from "react";
 import { Scale } from "./Scale/Scale";
-import { useContrasts } from "./utils/useContrasts";
-import { COLOR } from "./utils/COLOR";
 
 export const Colors = () => {
-  const [colorTxt, setColorTxt] = useState(
-    COLOR.eigengrau.toString({ collapse: false, format: "hex" })
-  );
-
-  const handleChangeTxt = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      setColorTxt(e.target.value);
-    },
-    []
-  );
-
-  const [colorBg, setColorBg] = useState(
-    COLOR.white.toString({ collapse: false, format: "hex" })
-  );
-
-  const handleChangeBg = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      setColorBg(e.target.value);
-    },
-    []
-  );
-
-  const handleClickFlip = useCallback(() => {
-    const nextColorTxt = colorBg;
-    const nextColorBg = colorTxt;
-    setColorTxt(nextColorTxt);
-    setColorBg(nextColorBg);
-  }, [colorBg, colorTxt]);
-
-  const {
-    bgYApca,
-    txtYApca,
-    contrastApca,
-    contrastWcag2,
-    gradeApca,
-    gradeWcag2,
-    bgYWcag2,
-    txtYWcag2,
-  } = useContrasts(colorTxt, colorBg);
-
   return (
     <div>
       <h2>Colors</h2>
-      <p>colors demos</p>
-      <br />
-      <section>
-        <h3>Color luminance and contrast measurement</h3>
-        <label htmlFor="text">Text color</label>
-        <input
-          name="text"
-          type="color"
-          value={colorTxt}
-          onChange={handleChangeTxt}
-        />
-        <dl>
-          <dt>Luminance</dt>
-          <dd>{txtYApca}</dd>
-          <dt>WCAG2 Luminance</dt>
-          <dd>{txtYWcag2}</dd>
-        </dl>
-        <br />
-        <label htmlFor="background">Background color</label>
-        <input
-          name="background"
-          type="color"
-          value={colorBg}
-          onChange={handleChangeBg}
-        />
-        <dl>
-          <dt>APCA Luminance</dt>
-          <dd>{bgYApca}</dd>
-          <dt>WCAG2 Luminance</dt>
-          <dd>{bgYWcag2}</dd>
-        </dl>
-        <br />
-        <button onClick={handleClickFlip}>Flip</button>
-        <br />
-        <dl>
-          <dt>APCA Contrast</dt>
-          <dd>{contrastApca}</dd>
-          <dt>APCA Grade</dt>
-          <dd>{gradeApca.value}</dd>
-          <dt>WCAG2 Contrast</dt>
-          <dd>{contrastWcag2}</dd>
-          <dt>WCAG2 Grade</dt>
-          <dd>{gradeWcag2.value}</dd>
-        </dl>
-      </section>
       <section>
         <h3>Color generation by contrast</h3>
+        <p>
+          When you change the input color, the gradient updates in OKLCH color
+          space. OKLCH is intended to be perceptually uniform, so just by using
+          your browser's in color picker, switching to HSL, and messing with the
+          H slider, you can see how different perceived brightness is between
+          various hues.
+        </p>
+        <p>
+          Even more interestingly, we're finding the closest colors sharing an
+          OKLCH chroma and hue that meet certain (somewhat arbitrary) contrast
+          thresholds. You can see the nearest neigbor colors that hit three
+          contrast thresholds using both contrast algorithms from APCA (a
+          candidate for WCAG3) and WCAG2 (the current accessibility standard).
+        </p>
+        <p>
+          Oh, APCA. I think its model is strictly better in terms of predicting
+          legibility of text.
+          <em>However,</em> I find the granularity of its lookup table pretty
+          onerous, and it sets the bar noticeably higher in a way that I suspect
+          will hinder adoption.
+        </p>
         <Scale />
+        <br />
+        <br />
       </section>
     </div>
   );

@@ -1,4 +1,5 @@
 import { APCA_CONSTANTS_98G } from "./APCA_CONSTANTS_98G";
+import { MAX_Y, MIN_Y } from "./Y_RANGE";
 
 /**
  * Take luminances for txt and bg, return contrast. Contrast may be negative.
@@ -12,7 +13,7 @@ export function getContrastApca({
   txtY: number;
   bgY: number;
 }): number {
-  const icp = [0.0, 1.1]; // input range clamp / input error check
+  const icp = [MIN_Y, MAX_Y]; // input range clamp / input error check
 
   if (
     isNaN(txtY) ||
@@ -21,7 +22,7 @@ export function getContrastApca({
     Math.max(txtY, bgY) > icp[1]
   ) {
     throw new Error(
-      "Invalid input. Luminances must be numbers between 0 and 1.1"
+      `Invalid input. Luminances must be numbers between ${MIN_Y} and ${MAX_Y}`
     );
   }
 
