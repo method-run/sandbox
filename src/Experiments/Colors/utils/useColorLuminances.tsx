@@ -3,14 +3,14 @@ import { useMemo } from "react";
 import { getLuminanceApca } from "./getLuminanceApca";
 import { getLuminanceWcag2 } from "./getLuminanceWcag2";
 
-export const getColorLuminances = (color: string) => {
-  const { r, g, b } = new Color(color).to("srgb");
+export const getColorLuminances = (color: Color | string) => {
+  const _color = new Color(color);
 
   return {
-    yApca: getLuminanceApca([r * 255, g * 255, b * 255]),
-    yWcag2: getLuminanceWcag2([r * 255, g * 255, b * 255]),
+    yApca: getLuminanceApca(_color),
+    yWcag2: getLuminanceWcag2(_color),
   };
 };
 
-export const useColorLuminances = (color: string) =>
+export const useColorLuminances = (color: Color | string) =>
   useMemo(() => getColorLuminances(color), [color]);

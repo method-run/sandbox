@@ -74,58 +74,122 @@ export class Grade {
    */
   public static normalText = "normal-text" as GradeCategory;
 
-  static orderedGrades = [
-    this.fail,
-    this.graphics,
-    this.largeText,
-    this.normalText,
+  public static orderedGrades = [
+    Grade.fail,
+    Grade.graphics,
+    Grade.largeText,
+    Grade.normalText,
   ];
+
+  public static compareGradeCategories = (
+    a: GradeCategory,
+    b: GradeCategory
+  ) => {
+    return Grade.orderedGrades.indexOf(a) - Grade.orderedGrades.indexOf(b);
+  };
 
   public static compare = (a: Grade, b: Grade) => {
     return (
-      this.orderedGrades.indexOf(a.value) - this.orderedGrades.indexOf(b.value)
+      Grade.orderedGrades.indexOf(a.value) -
+      Grade.orderedGrades.indexOf(b.value)
     );
   };
 
   public static breakpointsApca: Array<[number, GradeCategory]> = [
-    [0, this.fail],
-    [45, this.graphics],
-    [75, this.largeText],
-    [90, this.normalText],
+    [0, Grade.fail],
+    [45, Grade.graphics],
+    [75, Grade.largeText],
+    [90, Grade.normalText],
   ] as const;
 
   public static breakpointsWcag2 = [
-    [1, this.fail],
-    [3, this.graphics],
-    [4.5, this.largeText],
-    [7, this.normalText],
+    [1, Grade.fail],
+    [3, Grade.graphics],
+    [4.5, Grade.largeText],
+    [7, Grade.normalText],
   ] as const;
+
+  private static _toContrast = ({
+    maxOrMin,
+    gradeOrGradeCategory,
+    standard,
+  }: {
+    maxOrMin: "max" | "min";
+    gradeOrGradeCategory: Grade | GradeCategory;
+    standard: "APCA" | "WCAG2";
+  }): number => {
+    const gradeCategory =
+      gradeOrGradeCategory instanceof Grade
+        ? gradeOrGradeCategory.value
+        : gradeOrGradeCategory;
+
+    const breakpoints =
+      standard === "APCA" ? Grade.breakpointsApca : Grade.breakpointsWcag2;
+
+    let breakpointIndex = breakpoints.findIndex(
+      ([, _gradeCategory]) => gradeCategory === _gradeCategory
+    );
+
+    if (breakpointIndex < 0) {
+      throw new Error("Invalid grade");
+    }
+
+    if (maxOrMin === "max") {
+      breakpointIndex++;
+    }
+
+    if (breakpointIndex > breakpoints.length - 1) {
+      throw new Error("Grade out of bounds");
+    }
+
+    return breakpoints[breakpointIndex][0];
+  };
+
+  public static toMinContrastApca = (
+    gradeOrGradeCategory: Grade | GradeCategory
+  ): number => {
+    return Grade._toContrast({
+      maxOrMin: "min",
+      gradeOrGradeCategory,
+      standard: "APCA",
+    });
+  };
+
+  public static toMinContrastWcag2 = (
+    gradeOrGradeCategory: Grade | GradeCategory
+  ): number => {
+    return Grade._toContrast({
+      maxOrMin: "min",
+      gradeOrGradeCategory,
+      standard: "WCAG2",
+    });
+  };
 
   public static fromContrastApca = (contrast: number): GradeCategory => {
     const contrastAbs = Math.abs(contrast);
 
-    for (let i = this.breakpointsApca.length - 1; i >= 0; i--) {
-      const [minContrast, grade] = this.breakpointsApca[i];
+    for (let i = Grade.breakpointsApca.length - 1; i >= 0; i--) {
+      const [minContrast, grade] = Grade.breakpointsApca[i];
 
       if (contrastAbs >= minContrast) {
         return grade;
       }
     }
 
-    return this.fail;
+    return Grade.fail;
   };
 
   public static fromContrastWcag2 = (contrast: number): GradeCategory => {
     const contrastAbs = Math.abs(contrast);
 
-    for (let i = this.breakpointsWcag2.length - 1; i >= 0; i--) {
-      const [minContrast, grade] = this.breakpointsWcag2[i];
+    for (let i = Grade.breakpointsWcag2.length - 1; i >= 0; i--) {
+      const [minContrast, grade] = Grade.breakpointsWcag2[i];
 
       if (contrastAbs >= minContrast) {
         return grade;
       }
     }
 
-    return this.fail;
+    return Grade.fail;
   };
 }
