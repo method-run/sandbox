@@ -23,7 +23,8 @@ export const Colors = () => {
         <p>
           Oh, APCA. I think its model is strictly better in terms of predicting
           legibility of text.
-          <em>However,</em> I find the granularity of its lookup table pretty
+          <br />
+          On the other hand, I find the granularity of its lookup table pretty
           onerous, and it sets the bar noticeably higher in a way that I suspect
           will hinder adoption.
         </p>
