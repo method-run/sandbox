@@ -1,10 +1,10 @@
 import { Link, Route, Routes } from "react-router-dom";
-import EstimatingWork, {
-  frontmatter as EstimatingWorkFrontmatter,
-} from "./posts/EstimatingWork.mdx";
 import { DialogDemo } from "../Experiments/DialogDemo";
 import { isMdxFrontmatter } from "../Mdx";
 import { Nav } from "../Nav/Nav";
+import EstimatingWork, {
+  frontmatter as EstimatingWorkFrontmatter,
+} from "./posts/EstimatingWork.mdx";
 
 export const Blog = () => {
   if (!isMdxFrontmatter(EstimatingWorkFrontmatter)) {
@@ -20,7 +20,23 @@ export const Blog = () => {
         </Link>
       </Nav>
       <Routes>
-        <Route index element={<div>INDEX</div>} />
+        <Route
+          index
+          element={
+            <div>
+              <p>
+                Oh, man. I don't know what to tell you. These are gonna be some
+                random thoughts.
+              </p>
+              <p>
+                I believe deeply in transparency and vulnerability. I like
+                saying "Fuck it, ship it." But what comes out is ... you know, a
+                mess.
+              </p>
+              <p>Enjoy this sporadically published blog.</p>
+            </div>
+          }
+        />
         <Route
           path={EstimatingWorkFrontmatter.slug}
           element={

@@ -14,7 +14,22 @@ function App() {
         <Link to="/experiments">Experiments</Link>
       </Nav>
       <Routes>
-        <Route index element={<div>INDEX</div>} />
+        <Route
+          index
+          element={
+            <div>
+              <p>
+                This isn't a portfolio, and it isn't a demo site. I guess it's
+                my sketchpad, that I've left open on the dining room table.
+              </p>
+              <p>
+                It's a Vite site on GH pages, in case you couldn't tell from the
+                URL. The most interesting thing on it at the moment is the color
+                experiments.
+              </p>
+            </div>
+          }
+        />
         <Route path="blog/*" element={<Blog />} />
         <Route path="experiments/*" element={<Experiments />} />
       </Routes>

@@ -13,7 +13,19 @@ export const Experiments = () => {
         <Link to="/experiments/dialog-demo">DialogDemo</Link>
       </Nav>
       <Routes>
-        <Route index element={<div>INDEX</div>} />
+        <Route
+          index
+          element={
+            <div>
+              <p>
+                This is really just a code sandbox, but on the actual web, so I
+                can do things like (checks notes) practice embedding the world's
+                dumbest Lit component in an honest to god website instead of
+                Lit's own demo site template.
+              </p>
+            </div>
+          }
+        />
         <Route
           path="pxb-blink"
           element={
