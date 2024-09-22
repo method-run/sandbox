@@ -1,24 +1,34 @@
-import { Link, Route, Routes } from "react-router-dom";
-import { DialogDemo } from "../Experiments/DialogDemo";
-import { isMdxFrontmatter } from "../Mdx";
-import { Nav } from "../Nav/Nav";
-import EstimatingWork, {
-  frontmatter as EstimatingWorkFrontmatter,
-} from "./posts/EstimatingWork.mdx";
+import { Route, Routes } from "react-router-dom";
+import {
+  ComponentProps,
+  ReactNode,
+  Suspense,
+  useEffect,
+  useState,
+} from "react";
+import { PostsNav } from "./PostsNav";
+import { getPostRoutesAsync } from "./getPostRoutesAsync";
 
-export const Blog = () => {
-  if (!isMdxFrontmatter(EstimatingWorkFrontmatter)) {
-    return null;
-  }
+export const Blog = (): ReactNode => {
+  const [postRouteProps, setPostRouteProps] = useState<
+    Array<ComponentProps<typeof Route> & { slug: string }>
+  >([]);
+
+  useEffect(() => {
+    const getPostRouteProps = async () => {
+      const postRouteProps = await getPostRoutesAsync();
+      setPostRouteProps(postRouteProps);
+    };
+
+    getPostRouteProps();
+  }, []);
 
   return (
     <>
       <h1>Blog</h1>
-      <Nav>
-        <Link to={`/blog/${EstimatingWorkFrontmatter.slug}`}>
-          {EstimatingWorkFrontmatter.title}
-        </Link>
-      </Nav>
+      <Suspense fallback={<div>Loading ...</div>}>
+        <PostsNav />
+      </Suspense>
       <Routes>
         <Route
           index
@@ -37,17 +47,9 @@ export const Blog = () => {
             </div>
           }
         />
-        <Route
-          path={EstimatingWorkFrontmatter.slug}
-          element={
-            <div>
-              <DialogDemo />
-              <h1>{EstimatingWorkFrontmatter.title}</h1>
-              <em>{EstimatingWorkFrontmatter.date}</em>
-              <EstimatingWork />
-            </div>
-          }
-        />
+        {postRouteProps.map((props) => (
+          <Route {...props} key={props.slug} />
+        ))}
       </Routes>
     </>
   );
