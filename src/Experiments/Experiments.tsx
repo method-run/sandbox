@@ -2,6 +2,7 @@ import { Link, Route, Routes } from "react-router-dom";
 import { DialogDemo } from "./DialogDemo";
 import { Nav } from "../Nav/Nav";
 import { Colors } from "./Colors";
+import { Landscapes } from "./Landscapes/Landscapes";
 
 export const Experiments = () => {
   return (
@@ -10,6 +11,7 @@ export const Experiments = () => {
       <Nav>
         <Link to="/experiments/pxb-blink">pxb-blink</Link>
         <Link to="/experiments/colors">Colors</Link>
+        <Link to="/experiments/landscapes">Landscapes</Link>
         <Link to="/experiments/dialog-demo">DialogDemo</Link>
       </Nav>
       <Routes>
@@ -34,8 +36,9 @@ export const Experiments = () => {
             </div>
           }
         />
-        <Route path={"colors"} element={<Colors />} />
-        <Route path={"dialog-demo"} element={<DialogDemo />} />
+        <Route path="landscapes/*" element={<Landscapes />} />
+        <Route path="colors" element={<Colors />} />
+        <Route path="dialog-demo" element={<DialogDemo />} />
       </Routes>
     </>
   );
