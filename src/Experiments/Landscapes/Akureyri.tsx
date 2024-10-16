@@ -3,7 +3,9 @@ import { useCallback, useLayoutEffect, useState } from "react";
 import { Word } from "../Word";
 
 export const Akureyri = () => {
-  const bodyCss = css({});
+  const bodyCss = css({
+    fontSize: "calc(100vw / 9)",
+  });
 
   const gridCss = css(`
         position: fixed;
@@ -14,6 +16,7 @@ export const Akureyri = () => {
         display: grid;
         grid-template-columns: repeat(1, 1fr);
         grid-template-rows: 2fr 1fr 1fr 0.25fr 2fr;
+        background: white;
 
         grid-template-areas:
             "sky"
@@ -43,6 +46,7 @@ export const Akureyri = () => {
 
   useLayoutEffect(() => {
     document.body.classList.add(bodyCss);
+    return () => document.body.classList.remove(bodyCss);
   }, [bodyCss]);
 
   const [skyStyle, setSkyStyle] = useState<string>(
@@ -124,8 +128,8 @@ export const Akureyri = () => {
   const headingCss = css(`
     margin: 0;
     top: 50%;
-    font-size: 3rem;
-    margin-top: -1.5rem;
+    font-size: 1em;
+    margin-top: -0.5em;
     position: absolute;
     padding: 0;
     left: 0;

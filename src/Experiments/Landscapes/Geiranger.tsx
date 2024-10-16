@@ -3,7 +3,9 @@ import { useLayoutEffect } from "react";
 import { Word } from "../Word";
 
 export const Geiranger = () => {
-  const bodyCss = css({});
+  const bodyCss = css({
+    fontSize: "calc(100vw / 10)",
+  });
 
   const gridCss = css(`
       position: fixed;
@@ -15,6 +17,7 @@ export const Geiranger = () => {
 
   const landscapeGradientCss = css(`
     background:
+      white
       linear-gradient(
         180deg,
         oklch(0.76 0.13 254.95),
@@ -44,13 +47,14 @@ export const Geiranger = () => {
 
   useLayoutEffect(() => {
     document.body.classList.add(bodyCss);
+    return () => document.body.classList.remove(bodyCss);
   }, [bodyCss]);
 
   const headingCss = css(`
     margin: 0;
     top: 50%;
-    font-size: 3rem;
-    margin-top: -1.5rem;
+    font-size: 1em;
+    margin-top: -0.5em;
     position: absolute;
     padding: 0;
     left: 0;

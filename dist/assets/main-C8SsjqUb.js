@@ -64,7 +64,7 @@ Error generating stack: `+o.message+`
  * LICENSE.md file in the root directory of this source tree.
  *
  * @license MIT
- */function La(){return La=Object.assign?Object.assign.bind():function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var r in n)Object.prototype.hasOwnProperty.call(n,r)&&(e[r]=n[r])}return e},La.apply(this,arguments)}function Bg(e,t){if(e==null)return{};var n={},r=Object.keys(e),i,o;for(o=0;o<r.length;o++)i=r[o],!(t.indexOf(i)>=0)&&(n[i]=e[i]);return n}function bg(e){return!!(e.metaKey||e.altKey||e.ctrlKey||e.shiftKey)}function Dg(e,t){return e.button===0&&(!t||t==="_self")&&!bg(e)}const Fg=["onClick","relative","reloadDocument","replace","state","target","to","preventScrollReset","unstable_viewTransition"],Wg="6";try{window.__reactRouterVersion=Wg}catch{}const Ug="startTransition",gf=B1[Ug];function Hg(e){let{basename:t,children:n,future:r,window:i}=e,o=E.useRef();o.current==null&&(o.current=K2({window:i,v5Compat:!0}));let l=o.current,[s,a]=E.useState({action:l.action,location:l.location}),{v7_startTransition:u}=r||{},c=E.useCallback(f=>{u&&gf?gf(()=>a(f)):a(f)},[a,u]);return E.useLayoutEffect(()=>l.listen(c),[l,c]),E.createElement(Ig,{basename:t,children:n,location:s.location,navigationType:s.action,navigator:l,future:r})}const Vg=typeof window<"u"&&typeof window.document<"u"&&typeof window.document.createElement<"u",Gg=/^(?:[a-z][a-z0-9+.-]*:|\/\/)/i,gt=E.forwardRef(function(t,n){let{onClick:r,relative:i,reloadDocument:o,replace:l,state:s,target:a,to:u,preventScrollReset:c,unstable_viewTransition:f}=t,d=Bg(t,Fg),{basename:y}=E.useContext(jn),g,v=!1;if(typeof u=="string"&&Gg.test(u)&&(g=u,Vg))try{let m=new URL(window.location.href),x=u.startsWith("//")?new URL(m.protocol+u):new URL(u),k=Du(x.pathname,y);x.origin===m.origin&&k!=null?u=k+x.search+x.hash:v=!0}catch{}let S=kg(u,{relative:i}),h=Qg(u,{replace:l,state:s,target:a,preventScrollReset:c,relative:i,unstable_viewTransition:f});function p(m){r&&r(m),m.defaultPrevented||h(m)}return E.createElement("a",La({},d,{href:g||S,onClick:v||o?r:p,ref:n,target:a}))});var yf;(function(e){e.UseScrollRestoration="useScrollRestoration",e.UseSubmit="useSubmit",e.UseSubmitFetcher="useSubmitFetcher",e.UseFetcher="useFetcher",e.useViewTransitionState="useViewTransitionState"})(yf||(yf={}));var vf;(function(e){e.UseFetcher="useFetcher",e.UseFetchers="useFetchers",e.UseScrollRestoration="useScrollRestoration"})(vf||(vf={}));function Qg(e,t){let{target:n,replace:r,state:i,preventScrollReset:o,relative:l,unstable_viewTransition:s}=t===void 0?{}:t,a=Cg(),u=Tl(),c=uh(e,{relative:l});return E.useCallback(f=>{if(Dg(f,n)){f.preventDefault();let d=r!==void 0?r:il(u)===il(c);a(e,{replace:d,state:i,preventScrollReset:o,relative:l,unstable_viewTransition:s})}},[u,a,c,r,i,n,e,o,l,s])}const Yg="modulepreload",Xg=function(e){return"/sandbox/"+e},wf={},ll=function(t,n,r){let i=Promise.resolve();if(n&&n.length>0){document.getElementsByTagName("link");const o=document.querySelector("meta[property=csp-nonce]"),l=(o==null?void 0:o.nonce)||(o==null?void 0:o.getAttribute("nonce"));i=Promise.all(n.map(s=>{if(s=Xg(s),s in wf)return;wf[s]=!0;const a=s.endsWith(".css"),u=a?'[rel="stylesheet"]':"";if(document.querySelector(`link[href="${s}"]${u}`))return;const c=document.createElement("link");if(c.rel=a?"stylesheet":Yg,a||(c.as="script",c.crossOrigin=""),c.href=s,l&&c.setAttribute("nonce",l),document.head.appendChild(c),a)return new Promise((f,d)=>{c.addEventListener("load",f),c.addEventListener("error",()=>d(new Error(`Unable to preload CSS for ${s}`)))})}))}return i.then(()=>t()).catch(o=>{const l=new Event("vite:preloadError",{cancelable:!0});if(l.payload=o,window.dispatchEvent(l),!l.defaultPrevented)throw o})},dh=e=>{const t=e;return typeof t.title=="string"&&typeof t.date=="string"&&typeof t.slug=="string"},Kg="_nav_49v55_1",Zg={nav:Kg},Ol=({className:e="",...t})=>w.jsx("nav",{className:[e,Zg.nav].join(" "),...t}),Jg=Object.assign({"./posts/EstimatingWork.mdx":()=>ll(()=>import("./EstimatingWork-RS3gv_A4.js"),[]),"./posts/Pragmatic.mdx":()=>ll(()=>import("./Pragmatic-URpSv_5L.js"),[])});function qg(e){const[t,n]=E.useState({}),r=E.useCallback(async()=>{for(const[i,o]of Object.entries(Jg)){const l=await o();n(s=>({...s,[i]:l}))}},[]);return E.useEffect(()=>{r()},[r]),w.jsx(Ol,{...e,children:Object.values(t).map(i=>{const o=i==null?void 0:i.frontmatter;return!o||!dh(o)?null:w.jsx(gt,{to:`/blog/${o.slug}`,children:o.title},o.slug)})})}const e5=Object.assign({"./posts/EstimatingWork.mdx":()=>ll(()=>import("./EstimatingWork-RS3gv_A4.js"),[]),"./posts/Pragmatic.mdx":()=>ll(()=>import("./Pragmatic-URpSv_5L.js"),[])});async function t5(){const e={};for(const[n,r]of Object.entries(e5)){const i=await r();e[n]=i}return Object.values(e).filter(n=>{const r=n==null?void 0:n.frontmatter,i=n==null?void 0:n.default;return!(!r||!dh(r)||typeof i!="function")}).map(({default:n,frontmatter:r})=>({slug:r.slug,path:r.slug,element:w.jsxs("div",{children:[w.jsx("h1",{children:r.title}),w.jsx("em",{children:r.date}),w.jsx(n,{})]})}))}const n5=()=>{const[e,t]=E.useState([]);return E.useEffect(()=>{(async()=>{const r=await t5();t(r)})()},[]),w.jsxs(w.Fragment,{children:[w.jsx("h1",{children:"Blog"}),w.jsx(E.Suspense,{fallback:w.jsx("div",{children:"Loading ..."}),children:w.jsx(qg,{})}),w.jsxs(jl,{children:[w.jsx(je,{index:!0,element:w.jsxs("div",{children:[w.jsx("p",{children:"Oh, man. I don't know what to tell you. These are gonna be some random thoughts."}),w.jsx("p",{children:'I believe deeply in transparency and vulnerability. I like saying "Fuck it, ship it." But what comes out is ... you know, a mess.'}),w.jsx("p",{children:"Enjoy this sporadically published blog."})]})}),e.map(n=>E.createElement(je,{...n,key:n.slug}))]})]})};/**
+ */function La(){return La=Object.assign?Object.assign.bind():function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var r in n)Object.prototype.hasOwnProperty.call(n,r)&&(e[r]=n[r])}return e},La.apply(this,arguments)}function Bg(e,t){if(e==null)return{};var n={},r=Object.keys(e),i,o;for(o=0;o<r.length;o++)i=r[o],!(t.indexOf(i)>=0)&&(n[i]=e[i]);return n}function bg(e){return!!(e.metaKey||e.altKey||e.ctrlKey||e.shiftKey)}function Dg(e,t){return e.button===0&&(!t||t==="_self")&&!bg(e)}const Fg=["onClick","relative","reloadDocument","replace","state","target","to","preventScrollReset","unstable_viewTransition"],Wg="6";try{window.__reactRouterVersion=Wg}catch{}const Ug="startTransition",gf=B1[Ug];function Hg(e){let{basename:t,children:n,future:r,window:i}=e,o=E.useRef();o.current==null&&(o.current=K2({window:i,v5Compat:!0}));let l=o.current,[s,a]=E.useState({action:l.action,location:l.location}),{v7_startTransition:u}=r||{},c=E.useCallback(f=>{u&&gf?gf(()=>a(f)):a(f)},[a,u]);return E.useLayoutEffect(()=>l.listen(c),[l,c]),E.createElement(Ig,{basename:t,children:n,location:s.location,navigationType:s.action,navigator:l,future:r})}const Vg=typeof window<"u"&&typeof window.document<"u"&&typeof window.document.createElement<"u",Gg=/^(?:[a-z][a-z0-9+.-]*:|\/\/)/i,gt=E.forwardRef(function(t,n){let{onClick:r,relative:i,reloadDocument:o,replace:l,state:s,target:a,to:u,preventScrollReset:c,unstable_viewTransition:f}=t,d=Bg(t,Fg),{basename:y}=E.useContext(jn),g,v=!1;if(typeof u=="string"&&Gg.test(u)&&(g=u,Vg))try{let m=new URL(window.location.href),x=u.startsWith("//")?new URL(m.protocol+u):new URL(u),k=Du(x.pathname,y);x.origin===m.origin&&k!=null?u=k+x.search+x.hash:v=!0}catch{}let S=kg(u,{relative:i}),h=Qg(u,{replace:l,state:s,target:a,preventScrollReset:c,relative:i,unstable_viewTransition:f});function p(m){r&&r(m),m.defaultPrevented||h(m)}return E.createElement("a",La({},d,{href:g||S,onClick:v||o?r:p,ref:n,target:a}))});var yf;(function(e){e.UseScrollRestoration="useScrollRestoration",e.UseSubmit="useSubmit",e.UseSubmitFetcher="useSubmitFetcher",e.UseFetcher="useFetcher",e.useViewTransitionState="useViewTransitionState"})(yf||(yf={}));var vf;(function(e){e.UseFetcher="useFetcher",e.UseFetchers="useFetchers",e.UseScrollRestoration="useScrollRestoration"})(vf||(vf={}));function Qg(e,t){let{target:n,replace:r,state:i,preventScrollReset:o,relative:l,unstable_viewTransition:s}=t===void 0?{}:t,a=Cg(),u=Tl(),c=uh(e,{relative:l});return E.useCallback(f=>{if(Dg(f,n)){f.preventDefault();let d=r!==void 0?r:il(u)===il(c);a(e,{replace:d,state:i,preventScrollReset:o,relative:l,unstable_viewTransition:s})}},[u,a,c,r,i,n,e,o,l,s])}const Yg="modulepreload",Xg=function(e){return"/sandbox/"+e},wf={},ll=function(t,n,r){let i=Promise.resolve();if(n&&n.length>0){document.getElementsByTagName("link");const o=document.querySelector("meta[property=csp-nonce]"),l=(o==null?void 0:o.nonce)||(o==null?void 0:o.getAttribute("nonce"));i=Promise.all(n.map(s=>{if(s=Xg(s),s in wf)return;wf[s]=!0;const a=s.endsWith(".css"),u=a?'[rel="stylesheet"]':"";if(document.querySelector(`link[href="${s}"]${u}`))return;const c=document.createElement("link");if(c.rel=a?"stylesheet":Yg,a||(c.as="script",c.crossOrigin=""),c.href=s,l&&c.setAttribute("nonce",l),document.head.appendChild(c),a)return new Promise((f,d)=>{c.addEventListener("load",f),c.addEventListener("error",()=>d(new Error(`Unable to preload CSS for ${s}`)))})}))}return i.then(()=>t()).catch(o=>{const l=new Event("vite:preloadError",{cancelable:!0});if(l.payload=o,window.dispatchEvent(l),!l.defaultPrevented)throw o})},dh=e=>{const t=e;return typeof t.title=="string"&&typeof t.date=="string"&&typeof t.slug=="string"},Kg="_nav_49v55_1",Zg={nav:Kg},Ol=({className:e="",...t})=>w.jsx("nav",{className:[e,Zg.nav].join(" "),...t}),Jg=Object.assign({"./posts/EstimatingWork.mdx":()=>ll(()=>import("./EstimatingWork-DWlOqCOl.js"),[]),"./posts/Pragmatic.mdx":()=>ll(()=>import("./Pragmatic-JLp_Ljrw.js"),[])});function qg(e){const[t,n]=E.useState({}),r=E.useCallback(async()=>{for(const[i,o]of Object.entries(Jg)){const l=await o();n(s=>({...s,[i]:l}))}},[]);return E.useEffect(()=>{r()},[r]),w.jsx(Ol,{...e,children:Object.values(t).map(i=>{const o=i==null?void 0:i.frontmatter;return!o||!dh(o)?null:w.jsx(gt,{to:`/blog/${o.slug}`,children:o.title},o.slug)})})}const e5=Object.assign({"./posts/EstimatingWork.mdx":()=>ll(()=>import("./EstimatingWork-DWlOqCOl.js"),[]),"./posts/Pragmatic.mdx":()=>ll(()=>import("./Pragmatic-JLp_Ljrw.js"),[])});async function t5(){const e={};for(const[n,r]of Object.entries(e5)){const i=await r();e[n]=i}return Object.values(e).filter(n=>{const r=n==null?void 0:n.frontmatter,i=n==null?void 0:n.default;return!(!r||!dh(r)||typeof i!="function")}).map(({default:n,frontmatter:r})=>({slug:r.slug,path:r.slug,element:w.jsxs("div",{children:[w.jsx("h1",{children:r.title}),w.jsx("em",{children:r.date}),w.jsx(n,{})]})}))}const n5=()=>{const[e,t]=E.useState([]);return E.useEffect(()=>{(async()=>{const r=await t5();t(r)})()},[]),w.jsxs(w.Fragment,{children:[w.jsx("h1",{children:"Blog"}),w.jsx(E.Suspense,{fallback:w.jsx("div",{children:"Loading ..."}),children:w.jsx(qg,{})}),w.jsxs(jl,{children:[w.jsx(je,{index:!0,element:w.jsxs("div",{children:[w.jsx("p",{children:"Oh, man. I don't know what to tell you. These are gonna be some random thoughts."}),w.jsx("p",{children:'I believe deeply in transparency and vulnerability. I like saying "Fuck it, ship it." But what comes out is ... you know, a mess.'}),w.jsx("p",{children:"Enjoy this sporadically published blog."})]})}),e.map(n=>E.createElement(je,{...n,key:n.slug}))]})]})};/**
  * @license
  * Copyright 2019 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
@@ -232,7 +232,7 @@ Error generating stack: `+o.message+`
             box-shadow:
               -0.5em calc(4ex / 3) 0 ${t};
           }
-        `)}),[t,o]);if(!A3(e))throw new Error(`letter not implemented: ${e}`);return w.jsx("span",{className:tc(l,s[e]),children:e})};function A3(e){return R3.includes(e)}const v1=({value:e,...t})=>[...e].map((n,r)=>w.jsx(L3,{...t,value:n},`${n}-${r}`)),T3=()=>{const e=Y({}),t=Y(`
+        `)}),[t,o]);if(!A3(e))throw new Error(`letter not implemented: ${e}`);return w.jsx("span",{className:tc(l,s[e]),children:e})};function A3(e){return R3.includes(e)}const v1=({value:e,...t})=>[...e].map((n,r)=>w.jsx(L3,{...t,value:n},`${n}-${r}`)),T3=()=>{const e=Y({fontSize:"calc(100vw / 10)"}),t=Y(`
       position: fixed;
       top: 0;
       right: 0;
@@ -240,6 +240,7 @@ Error generating stack: `+o.message+`
       left: 0;
   `),n=Y(`
     background:
+      white
       linear-gradient(
         180deg,
         oklch(0.76 0.13 254.95),
@@ -265,17 +266,17 @@ Error generating stack: `+o.message+`
         oklch(0.42 0.04 127.29),
         oklch(0.53 0.09 108.14)
       );
-  `);E.useLayoutEffect(()=>{document.body.classList.add(e)},[e]);const r=Y(`
+  `);E.useLayoutEffect(()=>(document.body.classList.add(e),()=>document.body.classList.remove(e)),[e]);const r=Y(`
     margin: 0;
     top: 50%;
-    font-size: 3rem;
-    margin-top: -1.5rem;
+    font-size: 1em;
+    margin-top: -0.5em;
     position: absolute;
     padding: 0;
     left: 0;
     width: 100%;
     text-align: center;
-  `);return w.jsxs(w.Fragment,{children:[w.jsx("div",{className:tc(t,n)}),w.jsx("h1",{className:r,children:w.jsx(v1,{value:"geiranger"})})]})},j3=()=>{const e=Y({}),t=Y(`
+  `);return w.jsxs(w.Fragment,{children:[w.jsx("div",{className:tc(t,n)}),w.jsx("h1",{className:r,children:w.jsx(v1,{value:"geiranger"})})]})},j3=()=>{const e=Y({fontSize:"calc(100vw / 9)"}),t=Y(`
         position: fixed;
         top: 0;
         right: 0;
@@ -284,6 +285,7 @@ Error generating stack: `+o.message+`
         display: grid;
         grid-template-columns: repeat(1, 1fr);
         grid-template-rows: 2fr 1fr 1fr 0.25fr 2fr;
+        background: white;
 
         grid-template-areas:
             "sky"
@@ -309,7 +311,7 @@ Error generating stack: `+o.message+`
             transform: rotate(-0.5deg);
           }
         }
-    `);E.useLayoutEffect(()=>{document.body.classList.add(e)},[e]);const[n,r]=E.useState("background: linear-gradient(0, oklch(0.99 0.01 243.25) 0%, white 10%, oklch(0.96 0.02 243.25) 100%)"),[i,o]=E.useState(`
+    `);E.useLayoutEffect(()=>(document.body.classList.add(e),()=>document.body.classList.remove(e)),[e]);const[n,r]=E.useState("background: linear-gradient(0, oklch(0.99 0.01 243.25) 0%, white 10%, oklch(0.96 0.02 243.25) 100%)"),[i,o]=E.useState(`
     position: relative;
 
     background:
@@ -351,8 +353,8 @@ Error generating stack: `+o.message+`
   `),M=Y(`
     margin: 0;
     top: 50%;
-    font-size: 3rem;
-    margin-top: -1.5rem;
+    font-size: 1em;
+    margin-top: -0.5em;
     position: absolute;
     padding: 0;
     left: 0;
