@@ -4,15 +4,17 @@ import { Word } from "../Word";
 
 export const Geiranger = () => {
   const bodyCss = css({
+    height: "100dvh",
+    width: "100dvw",
+    overflow: "hidden",
     fontSize: "calc(100vw / 10)",
   });
 
   const gridCss = css(`
       position: fixed;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
+      inset: 0;
+      height: 100dvh;
+      width: 100dvw;
   `);
 
   const landscapeGradientCss = css(`
@@ -47,7 +49,12 @@ export const Geiranger = () => {
 
   useLayoutEffect(() => {
     document.body.classList.add(bodyCss);
-    return () => document.body.classList.remove(bodyCss);
+    document.documentElement.classList.add(bodyCss);
+
+    return () => {
+      document.body.classList.remove(bodyCss);
+      document.documentElement.classList.remove(bodyCss);
+    };
   }, [bodyCss]);
 
   const headingCss = css(`

@@ -4,15 +4,17 @@ import { Word } from "../Word";
 
 export const Akureyri = () => {
   const bodyCss = css({
+    height: "100dvh",
+    width: "100dvw",
+    overflow: "hidden",
     fontSize: "calc(100vw / 9)",
   });
 
   const gridCss = css(`
-        position: fixed;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
+        position: absolute;
+        inset: 0;
+        height: 100dvh;
+        width: 100dvw;
         display: grid;
         grid-template-columns: repeat(1, 1fr);
         grid-template-rows: 2fr 1fr 1fr 0.25fr 2fr;
@@ -46,7 +48,12 @@ export const Akureyri = () => {
 
   useLayoutEffect(() => {
     document.body.classList.add(bodyCss);
-    return () => document.body.classList.remove(bodyCss);
+    document.documentElement.classList.add(bodyCss);
+
+    return () => {
+      document.body.classList.remove(bodyCss);
+      document.documentElement.classList.remove(bodyCss);
+    };
   }, [bodyCss]);
 
   const [skyStyle, setSkyStyle] = useState<string>(

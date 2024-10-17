@@ -1,14 +1,12 @@
 import { Link, Route, Routes } from "react-router-dom";
 import { Nav } from "../../Nav/Nav";
-import { Geiranger } from "./Geiranger";
-import { Akureyri } from "./Akureyri";
 
 export const Landscapes = () => {
   return (
     <>
       <Nav>
-        <Link to="./akureyri">Akureyri</Link>
-        <Link to="./geiranger">Geiranger</Link>
+        <Link to="/akureyri">Akureyri</Link>
+        <Link to="/geiranger">Geiranger</Link>
       </Nav>
       <Routes>
         <Route
@@ -23,8 +21,6 @@ export const Landscapes = () => {
             </div>
           }
         />
-        <Route path="geiranger" element={<Geiranger />} />
-        <Route path="akureyri" element={<Akureyri />} />
       </Routes>
     </>
   );
